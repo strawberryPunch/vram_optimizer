@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-strawberryfist-vram-optimizer"
+version = "1.0.0"
+description = "A comprehensive VRAM management solution for ComfyUI with real-time GPU monitoring"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "StrawberryFist", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "StrawberryFist", email = "your.email@example.com"}
+]
+keywords = ["comfyui", "vram", "gpu", "optimization", "monitoring", "memory"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Hardware",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "GPUtil>=1.4.0",
+    "torch",
+]
+
+[project.urls]
+Homepage = "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer"
+Repository = "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer"
+Issues = "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer/issues"
+Changelog = "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["strawberry_vram_optimizer*"]
+
+[tool.setuptools.package-data]
+strawberry_vram_optimizer = ["*.txt", "*.md"]

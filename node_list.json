@@ -1,0 +1,19 @@
+{
+    "custom_nodes": [
+        {
+            "author": "StrawberryFist",
+            "title": "StrawberryFist VRAM Optimizer",
+            "reference": "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer",
+            "files": [
+                "https://github.com/YourUsername/comfyui-strawberryfist-vram-optimizer"
+            ],
+            "install_type": "git-clone",
+            "description": "A comprehensive VRAM management solution for ComfyUI with automatic cleanup and real-time GPU monitoring. Features include smart memory cleaning, background monitoring, warning systems, and detailed ASCII art status displays.",
+            "nodename_pattern": "StFist",
+            "pip": ["GPUtil>=1.4.0"],
+            "tags": ["vram", "gpu", "memory", "optimization", "monitoring", "performance"],
+            "js_path": "strawberry_vram_optimizer",
+            "preemptions": "AUTO"
+        }
+    ]
+}
