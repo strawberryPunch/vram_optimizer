@@ -48,6 +48,25 @@ A comprehensive VRAM management solution for ComfyUI that automatically optimize
 2. Extract to `ComfyUI/custom_nodes/`
 3. Restart ComfyUI
 
+4. Example
+<img width="1708" height="684" alt="image" src="https://github.com/user-attachments/assets/7e49a6ad-d648-46f7-9630-f1bec32bc4d2" />
+<img width="713" height="141" alt="image" src="https://github.com/user-attachments/assets/f48014be-d8d8-4525-8f7a-8fa84412f72a" />
+
+🔄 Automatic Execution Behavior
+The StFist - VRAM Optimizer node does not require a connection to other nodes in the workflow.
+Simply placing it anywhere on the canvas will trigger its execution automatically before and/or after each queue run, depending on the selected run_timing setting.
+
+✨ Optimization status is:
+
+Displayed directly in the ComfyUI console output (with timestamps and memory usage details)
+
+Also optionally passed to the status output pin for use with nodes like Show Text
+
+This allows for non-intrusive background optimization without disrupting the workflow structure.
+
+✅ Tip: You can place the node in a corner of your workspace for passive VRAM management.
+
+
 ## 📋 Requirements
 
 - ComfyUI
