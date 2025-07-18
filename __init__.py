@@ -524,3 +524,44 @@ class StrawberryGPUMonitor:
             
             # Real-time log (optional)
             if refresh_trigger > 0:
+                print(f"🔄 [{current_time}] GPU status update - usage: {gpu_info['percent']:.1f}%")
+            
+            # Generate status display
+            status_display = self.generate_status_display(warning_threshold)
+            
+            # Simple status string
+            status_text = f"GPU: {gpu_info['percent']:.1f}% ({gpu_info['used']:.1f}MB/{gpu_info['total']:.1f}MB)"
+            
+            return (
+                status_text,
+                gpu_info['percent'],
+                gpu_info['used'],
+                gpu_info['total'],
+                gpu_info['name'],
+                {"ui": {"text": status_display}}
+            )
+            
+        except Exception as e:
+            current_time = time.strftime("%H:%M:%S", time.localtime())
+            error_msg = f"💥 [{current_time}] GPU monitoring error: {str(e)}"
+            print(error_msg)
+            return (
+                error_msg,
+                0.0,
+                0.0,
+                0.0,
+                "Error",
+                {"ui": {"text": error_msg}}
+            )
+
+
+# ComfyUI node registration
+NODE_CLASS_MAPPINGS = {
+    "StrawberryVramOptimizer": StrawberryVramOptimizer,
+    "StrawberryGPUMonitor": StrawberryGPUMonitor
+}
+
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "StrawberryVramOptimizer": "StFist - VRAM Optimizer",
+    "StrawberryGPUMonitor": "StFist - GPU Monitor"
+}
