@@ -50,15 +50,15 @@ class GPUMonitor:
         }
     
     def log_gpu_status(self, execution_count=0):
-        """GPU 상태 로그 출력"""
+        """Log GPU status"""
         current_time = time.strftime("%H:%M:%S", time.localtime())
         gpu_info = self.get_gpu_info()
         
         if gpu_info:
-            print(f"📊 [{current_time}] GPU 메모리 상태: {gpu_info['used']:.1f}MB / {gpu_info['total']:.1f}MB ({gpu_info['percent']:.1f}%)")
+            print(f"📊 [{current_time}] GPU memory status: {gpu_info['used']:.1f}MB / {gpu_info['total']:.1f}MB ({gpu_info['percent']:.1f}%)")
             return True
         else:
-            print(f"❌ [{current_time}] GPU 정보를 가져올 수 없습니다.")
+            print(f"❌ [{current_time}] Cannot get GPU information.")
             return False
     
     def should_clean_memory(self, auto_clean_mode, threshold=70):

@@ -63,33 +63,33 @@ class VRAMCleaner:
             }
     
     def log_cleanup_progress(self, current_time):
-        """정리 진행 상황 로그"""
-        print(f"⚡ [{current_time}] VRAM 정리 진행... ({self.clear_mode} 모드)")
-        print(f"   🔧 torch.cuda.empty_cache() 실행중...")
+        """Log cleanup progress"""
+        print(f"⚡ [{current_time}] VRAM cleanup in progress... ({self.clear_mode} mode)")
+        print(f"   🔧 Executing torch.cuda.empty_cache()...")
         
         if self.clear_mode == "Aggressive":
-            print(f"   🔧 gc.collect() 실행중...")
+            print(f"   🔧 Executing gc.collect()...")
             if hasattr(torch.cuda, 'synchronize'):
-                print(f"   🔧 torch.cuda.synchronize() 실행중...")
+                print(f"   🔧 Executing torch.cuda.synchronize()...")
     
     def log_cleanup_result(self, result, current_time):
-        """정리 결과 로그"""
+        """Log cleanup result"""
         if result['success']:
             if result['cleared'] > 0:
-                print(f"🎉 [{current_time}] VRAM 정리 성공! {result['before']:.1f}MB → {result['after']:.1f}MB (해제: {result['cleared']:.1f}MB)")
+                print(f"🎉 [{current_time}] VRAM cleanup successful! {result['before']:.1f}MB → {result['after']:.1f}MB (freed: {result['cleared']:.1f}MB)")
             else:
-                print(f"✨ [{current_time}] 이미 최적화된 상태 (현재: {result['after']:.1f}MB)")
+                print(f"✨ [{current_time}] Already optimized (current: {result['after']:.1f}MB)")
         else:
-            print(f"❌ [{current_time}] VRAM 정리 실패: {result['error']}")
+            print(f"❌ [{current_time}] VRAM cleanup failed: {result['error']}")
     
     def generate_ui_message(self, result, current_time, execution_count):
-        """UI 메시지 생성"""
-        execution_info = f"[실행#{execution_count}] "
+        """Generate UI message"""
+        execution_info = f"[Execution#{execution_count}] "
         
         if result['success']:
             if result['cleared'] > 0:
-                return f"🎉 {execution_info}[{current_time}] VRAM 정리 완료! 해제: {result['cleared']:.1f}MB"
+                return f"🎉 {execution_info}[{current_time}] VRAM cleanup completed! Freed: {result['cleared']:.1f}MB"
             else:
-                return f"✨ {execution_info}[{current_time}] 이미 최적화된 상태 ({result['after']:.1f}MB)"
+                return f"✨ {execution_info}[{current_time}] Already optimized ({result['after']:.1f}MB)"
         else:
             return f"❌ {execution_info}[{current_time}] {result['error']}"
